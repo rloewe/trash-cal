@@ -13,7 +13,9 @@ export async function startServer(vestfor: Vestfor, port: number): Promise<void>
   })
 
   app.get('/', (_, res) => {
-    res.status(200).json(vestfor.getData())
+    const today = new Date()
+    today.setHours(0, 0, 0, 0)
+    res.status(200).json(vestfor.getData().filter((collection) => collection.date >= today))
   })
 
   app.listen(port, () => {

@@ -168,9 +168,9 @@ export class Vestfor {
         this.data.LastUpdated = new Date()
 
         try {
-          await writeFile('vestfor.json', JSON.stringify(this.data))
+          await writeFile(this.filePath, JSON.stringify(this.data))
         } catch (err) {
-          console.log('Error writing vestfor.json:', err)
+          console.log(`Error writing ${this.filePath}:`, err)
         }
       }
     } catch (err) {
